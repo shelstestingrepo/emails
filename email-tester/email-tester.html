@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Front End Services Team - Email Tester - Author Shelomith Chatmon
+        </title>
+    </head>
+
+    <body>
+        <h1>
+            Front End Team HTML Email Testing Portal
+        </h1>
+        <p>This application will send email to our yahoo, and gmail team accounts, in addition to the outlook and apple mail address entered.</p>
+        <form method="post" action="email-test2.php">
+            <p>
+                <label for="email">
+                    Outlook Email Address:
+                </label><br>
+                Separate multiple emails with a comma (toyou@email.com, tothem@email.com)<br />
+                <input type="email" name="outlook_email" id="id" size="50" >
+            </p>
+            <p>
+                <label for="email">
+                    Apple Email Address(es):
+                </label><br>
+                Separate multiple emails with a comma (toyou@email.com, tothem@email.com)<br />
+                <input type="email" name="apple_mail" id="id" size="50" >
+            </p>
+            <p>
+                <label for="message">
+                    HTML Email Code:
+                </label><br />
+                <textarea id="message" name="message" rows="30" cols="60">
+                   
+                </textarea>
+            </p>
+            <p>
+                <input type="submit" value="Send Email">
+            </p>
+        </form>
+    </body>
+</html>
