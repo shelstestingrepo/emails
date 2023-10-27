@@ -11,6 +11,9 @@
     .email-wrapper {
         position: relative;
         width:100%;
+        width:640px;
+        max-width:100%;
+        margin:auto;
     }
     .header{
         position: relative;
@@ -31,6 +34,7 @@
     .header-logo {
         position: relative;
         width:100%;
+      
     }
     .confirmation-message {
         position: relative;
@@ -43,7 +47,8 @@
     }
     .transaction-details{
         position: relative;
-        width:90%;
+        width:1320px;
+        /*width:90%;*/
         margin:auto;
         padding-left:30px;
     }
@@ -96,12 +101,15 @@
     .mt-medium {
         margin-top:30px;
     }
-
-    @media only screen and (max-width:768px){
-
+    .mt-small {
+        margin-top:15px;
     }
-        
-    
+
+    .header-logo.one {
+        position:relative;
+        width:213px;
+        width:40%;
+    }
     </style>
 </head>
 
@@ -109,21 +117,21 @@
 <div class="email-wrapper">
     <div class="header">
         <div class="header-img-wrapper-1">
-            <img src="imgs/ONEINC_Logo_RGB.svg" class="header-logo">
+            <img src="https://amtcdn.amtrustgroup.com/CDN/AFSI/assets/OneInc_logo.png" class="header-logo one" alt="One Inc Logo Banner">
         </div>
     </div>
     <div class="header">
         <div class="header-img-wrapper-2">
-            <img src="imgs/Nexus_banner.png" class="header-logo">
+            <img src="https://amtcdn.amtrustgroup.com/CDN/AFSI/assets/ao-email-banner.png" class="header-logo" alt="Amtrust Logo Banner">
         </div>
     </div>
 
     <div class="confirmation-message">
-        Thank you, your payment of $781.00 has been received.
+        Thank you, your payment of {{totalamountdue}} has been received.
     </div>
     <div class="transaction-details">
-        <h4>Transaction: (One, Inc. transaction ID)</h4>
-        <h4>Account: 28729440</h4>
+        <h4>Transaction: {{transactionId}}</h4>
+        <h4>Account:  {{account}}</h4>
     </div>
     <div class="policy-details-wrapper">
         <div class="policy-details-row">
@@ -137,10 +145,10 @@
 
         <div class="policy-details-row">
             <div class="policy-details-row-left">
-                <p class="policy-detail">TWC4381927</p>
+                <p class="policy-detail">{{<!--PolicyNumber-->}}</p>
             </div>
             <div class="policy-details-row-right">
-                <p class="policy-detail">$781.00</p>
+                <p class="policy-detail">{{totalamountdue}}</p>
             </div>
         </div>
 
@@ -150,16 +158,16 @@
                 <p class="policy-detail">Billing Fee</p>
             </div>
             <div class="policy-details-row-right">
-                <p class="policy-detail">$0.00</p>
+                <p class="policy-detail">{{<!--BillingFee-->}}</p>
             </div>
         </div>
 
         <div class="policy-details-row">
             <div class="policy-details-row-left">
-                <p class="policy-detail">Processing Fee*</p>
+                <p class="policy-detail">Processing Fee<sup>*</sup></p>
             </div>
             <div class="policy-details-row-right">
-                <p class="policy-detail">$x.xx</p>
+                <p class="policy-detail">{{<!--ProcessingFee-->}}</p>
             </div>
         </div>
 
@@ -168,24 +176,27 @@
                 <p class="policy-detail bold">Total Transactinal Amount</p>
             </div>
             <div class="policy-details-row-right">
-                <p class="policy-detail">$781.00</p>
+                <p class="policy-detail">{{totalamountdue}}</p>
             </div>
         </div>
     </div>
 
-    <div class="policy-copy-wrapper">
-        <p class="bold"> *The total amount to be charged to your card will be the policy payment amount plus a 2.99% processing fee. This is a processing
-            fee, collected by One, Ic., for this payment option.
+    <div class="policy-copy-wrapper mt-medium">
+        <p class="bold "> *The total amount to be charged to your card will be the policy payment amount plus a 2.99% processing fee. This is a processing
+            fee, collected by One, Inc., for this payment option.
         </p>
 
-        <p class="mt-large">If you have any issues or you did not request this service, you can contact customer service at <strong>877-528-7878.</strong></p>
+        <p class="mt-large">If you have any issues or you did not request this service, you can contact customer service at <strong>{{companycontact}}</strong>.</p>
         <p>Partial payments on policies in pending cancellation will not result in reinstatement.  Once the balance owed is fully paid then the policy is eligible for reinstatement.</p>
-        <p>Thank You.
+        <p>Thank You.</p>
         <p class="sign-off mt-medium"> AmTrust Financial Services Team</p>
-        <p class="link-text">To visit AmTrust site <a href="" class="link-text"><strong>Click Here</strong></a></p>
+        <p class="link-text">To visit AmTrust site <a href="{{clickhereurl}}" class="link-text"><strong>Click Here</strong></a></p>
+        <p class="mt-large">
+            {{companyaddress}}
+        </p>
     </div>
-
 </div>
 
+<custom name="opencounter" type="tracking"></custom>
 </body>
 </html>
